@@ -1,10 +1,10 @@
 # Face Recognition + Attendance project
 
 ## Libraries used
-opencv
-face-recognition
-numpy
-datetime
+- opencv
+- face-recognition
+- numpy
+- datetime
 
 # Description:
 
