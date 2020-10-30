@@ -3,6 +3,7 @@ import face_recognition
 import numpy as np
 import os
 from datetime import datetime
+import csv
 
 path=os.path.join(os.getcwd(),'images')
 images=[]
@@ -14,7 +15,13 @@ for im in mylist:
     images.append(curimg)
     class_names.append(im.split('.')[0])
 def markattendance(name):
-    with open('attendance.csv','r+') as f:
+    if not os.path.isdir('attendance'):
+        os.mkdir('attendance')
+    if not os.path.exists("attendance/"+datetime.now().strftime('%d-%b-%Y')):
+
+        with open("attendance/"+datetime.now().strftime('%d-%b-%Y'), 'w+') as ff:
+            ff.write('NAME,DATE,TIME')
+    with open("attendance/"+datetime.now().strftime('%d-%b-%Y'),'r+') as f:
         mydatalist=f.readlines()
         namelist=[]
         for line in mydatalist:
@@ -24,7 +31,7 @@ def markattendance(name):
             now=datetime.now()
             dtstring=now.strftime('%d-%b-%Y'+','+'%H:%M:%S')
             f.writelines(f"\n{name},{dtstring.split(',')[0]},{dtstring.split(',')[1]}")
-        print(namelist)
+
 
 
 def encodings(images):
