@@ -1,7 +1,7 @@
 import os
 import cv2
 import sys
-os.chdir('C:\\Users\\prade\\PycharmProjects\\workspace\\attendance')
+os.chdir('C:\\Users\\prade\\PycharmProjects\\workspace\\attendance\\Image_collection_dataset')
 from glob import glob
 import shutil
 import numpy as np
@@ -63,9 +63,9 @@ os.mkdir('./Dataset/Test/'+name)
 for ind,i in enumerate(files):
     if ind<80:
 
-        shutil.move(i,'./Dataset/Train/'+name)
+        shutil.copy(i,'./Dataset/Train/'+name)
     else:
-        shutil.move(i, './Dataset/Test/'+name)
+        shutil.copy(i, './Dataset/Test/'+name)
 
 
 
